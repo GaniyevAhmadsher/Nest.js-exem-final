@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { DataBaseService } from 'src/core/database/database.service';
 
 @Injectable()
@@ -39,5 +43,11 @@ export class AdminsService {
     } catch (error) {
       throw new InternalServerErrorException(error.message);
     }
+  }
+
+  async deleteReview(id: string) {
+    const isHas = await this.database.review.findUnique({ where: { id } });
+    if (!isHas) throw new NotFoundException(`Review not found!`);
+    await this.database.review.delete({ where: { id } });
   }
 }
