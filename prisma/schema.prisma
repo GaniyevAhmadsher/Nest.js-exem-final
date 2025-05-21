@@ -70,8 +70,8 @@ model UserSubscription {
   autoRenew Boolean            @default(false)
   createdAt DateTime           @default(now())
 
-  user     User             @relation(fields: [userId], references: [id])
-  plan     SubscriptionPlan @relation(fields: [planId], references: [id])
+  plan     SubscriptionPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  user     User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   payments Payment[]
 
   @@map("user_subscriptions")
@@ -94,7 +94,7 @@ model Payment {
   externalTransactionId String?
   createdAt             DateTime      @default(now())
 
-  userSubscription UserSubscription @relation(fields: [userSubscriptionId], references: [id])
+  userSubscription UserSubscription @relation(fields: [userSubscriptionId], references: [id], onDelete: Cascade)
 
   @@map("payments")
 }
@@ -128,7 +128,7 @@ model Movie {
   createdById      String
   createdAt        DateTime         @default(now())
 
-  createdBy    User            @relation("CreatedMovies", fields: [createdById], references: [id])
+  createdBy    User            @relation("CreatedMovies", fields: [createdById], references: [id], onDelete: Cascade)
   categories   MovieCategory[]
   files        MovieFile[]
   favorites    Favorite[]
@@ -162,8 +162,8 @@ model MovieCategory {
   movieId    String
   categoryId String
 
-  movie    Movie    @relation(fields: [movieId], references: [id])
-  category Category @relation(fields: [categoryId], references: [id])
+  movie    Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   @@unique([movieId, categoryId])
   @@map("movie_categories")
@@ -178,7 +178,7 @@ model MovieFile {
   language  String       @default("uz")
   createdAt DateTime     @default(now())
 
-  movie Movie @relation(fields: [movieId], references: [id])
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 
   @@map("movie_files")
 }
@@ -198,8 +198,8 @@ model Favorite {
   movieId   String
   createdAt DateTime @default(now())
 
-  user  User  @relation(fields: [userId], references: [id])
-  movie Movie @relation(fields: [movieId], references: [id])
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 
   @@unique([userId, movieId])
   @@map("favorites")
@@ -214,8 +214,8 @@ model Review {
   comment   String?
   createdAt DateTime @default(now())
 
-  user  User  @relation(fields: [userId], references: [id])
-  movie Movie @relation(fields: [movieId], references: [id])
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 
   @@map("reviews")
 }
@@ -229,8 +229,8 @@ model WatchHistory {
   watchedPercentage Float
   lastWatched       DateTime @default(now())
 
-  user  User  @relation(fields: [userId], references: [id])
-  movie Movie @relation(fields: [movieId], references: [id])
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 
   @@map("watch_history")
 }

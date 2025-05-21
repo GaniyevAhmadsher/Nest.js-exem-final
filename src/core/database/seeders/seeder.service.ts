@@ -19,32 +19,37 @@ export class SeederService implements OnModuleInit {
     });
   }
 
-  async defaultSubscriptionPlan() {
-    await this.database.subscriptionPlan.createMany({
-      data: [
-        {
-          name: 'Free',
-          price: 0,
-          duration: 0,
-          unit: 'DAY',
-          features: ['SD sifatli kinolar', 'Reklama bilan'],
-        },
-        {
-          name: 'Premium',
-          price: 9990,
-          duration: 1,
-          unit: 'MONTH',
-          features: ['HD sifatli kinolar', 'Reklamasiz', 'Yangi kinolar'],
-        },
-      ],
-      skipDuplicates: true,
+  async defaultAdmin() {
+    const username = 'admin1';
+    const email = 'admin1@gmail.com';
+    const pass = 'admin1xxxx';
+    const password = await hash(pass, 12);
+
+    return await this.database.user.upsert({
+      where: { username, email },
+      update: {},
+      create: { username, email, password, role: 'ADMIN' },
+    });
+  }
+
+  async defaultUser() {
+    const username = 'user1';
+    const email = 'user1@gmail.com';
+    const pass = 'user1xxxx';
+    const password = await hash(pass, 12);
+
+    return await this.database.user.upsert({
+      where: { username, email },
+      update: {},
+      create: { username, email, password, role: 'USER' },
     });
   }
 
   async onModuleInit() {
     try {
       await this.defaultSuperAdmin();
-      await this.defaultSubscriptionPlan();
+      await this.defaultAdmin();
+      await this.defaultUser();
     } catch (error) {
       console.log(error.message);
       process.exit(1);

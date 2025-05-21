@@ -4,6 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { DataBaseService } from 'src/core/database/database.service';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class AdminsService {
@@ -50,4 +52,12 @@ export class AdminsService {
     if (!isHas) throw new NotFoundException(`Review not found!`);
     await this.database.review.delete({ where: { id } });
   }
+
+  async createCategory(createCategoryDto: CreateCategoryDto) {}
+
+  async allCategory() {}
+
+  async updateCategory(id: string, updateCategoryDto: UpdateCategoryDto) {}
+
+  async removeCategory(id: string) {}
 }
