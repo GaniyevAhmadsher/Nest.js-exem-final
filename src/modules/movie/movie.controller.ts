@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -34,7 +35,7 @@ export class MovieController {
     return { data };
   }
 
-  @Get('')
+  @Get()
   @UseGuards(ActiveSubscriptionGuard)
   @Roles('USER')
   async movieById(@Query('slug') slug: string, @Req() req: Request) {
@@ -43,15 +44,15 @@ export class MovieController {
     return { data };
   }
 
-  @Roles('ADMIN')
   @Post('upload')
+  @Roles('ADMIN')
   @UseInterceptors(
     FileFieldsInterceptor([
       { name: 'poster', maxCount: 1 },
       { name: 'videoFiles', maxCount: 5 },
     ]),
   )
-  async uploadMovie(
+  async addMovie(
     @UploadedFiles()
     files: {
       poster?: Express.Multer.File[];
@@ -62,5 +63,11 @@ export class MovieController {
   ) {
     const data = await this.movieService.addMovie(req.user.id, movieDto, files);
     return { data };
+  }
+
+  @Delete(':id')
+  async delMovie(@Param('id') id: string) {
+    await this.movieService.deleteMovie(id);
+    return { message: 'Movie deleted successfully' };
   }
 }

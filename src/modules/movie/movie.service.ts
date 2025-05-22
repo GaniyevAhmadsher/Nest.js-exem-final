@@ -222,5 +222,14 @@ export class MovieService {
 
   async updateMovie() {}
 
-  async deleteMovie() {}
+  async deleteMovie(id: string) {
+    const isHas = await this.database.movie.findUnique({ where: { id } });
+    if (!isHas) throw new NotFoundException(`Movie not found`);
+
+    try {
+      await this.database.movie.delete({ where: { id } });
+    } catch (error) {
+      throw new InternalServerErrorException(error.message);
+    }
+  }
 }

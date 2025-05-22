@@ -1,0 +1,1141 @@
+{
+	"info": {
+		"_postman_id": "532a16de-dfdb-4e9f-9b45-aa0c8fd37fa0",
+		"name": "Nest.js-exem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40691063",
+		"_collection_link": "https://martian-escape-977405.postman.co/workspace/Nest.js~0d00fb8b-6611-4757-a138-0d15892a318e/collection/40691063-532a16de-dfdb-4e9f-9b45-aa0c8fd37fa0?action=share&source=collection_link&creator=40691063"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user1\",\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1xxxx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/auth/sign-up",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"user1xxxx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/auth/login",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign out",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/auth/logout",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"super-admin1234@gmail.com\",\r\n    \"password\": \"sa1234\"\r\n}"
+						},
+						"url": {
+							"raw": "{{movie}}/auth/profile",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"Ganiyev Ahmadsher\",\r\n    \"phone\": \"+998 90 040 04 53\",\r\n    \"country\": \"uzbekistan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/users/profile",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Watch History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/users/watch-history",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"users",
+								"watch-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Ahmadsher/Pictures/photo_2024-09-05_10-22-21.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{movie}}/users/upload-profile-img",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"users",
+								"upload-profile-img"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "Subscription Plans",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/subscriptions/plans",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"subscriptions",
+								"plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Active Subscription",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/subscriptions/me",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"subscriptions",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscribe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"planId\": \"23c8bb97-5a60-4cd2-aa85-cd8719ff2672\",\r\n    \"paymentMethod\": \"OTHER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/subscriptions/create",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"subscriptions",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "All Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/movies",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "releaseYear",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "language",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "subscriptionType",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "category_name",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie by slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/movies?slug=titanic",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "titanic"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "TITANIC: JACK AND ROSE",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "TITANIC (1997) FULL MOVIE [ ENGLISH HD ] JACK AND ROSE",
+									"type": "text"
+								},
+								{
+									"key": "durationSecond",
+									"value": "3600",
+									"type": "text"
+								},
+								{
+									"key": "releaseYear",
+									"value": "1997",
+									"type": "text"
+								},
+								{
+									"key": "categoryIds",
+									"value": "[\"77af273b-0f41-4b9d-bc40-eb3fcf449a05\"]",
+									"type": "text"
+								},
+								{
+									"key": "poster",
+									"type": "file",
+									"src": "/C:/Users/Ahmadsher/Pictures/photo_2024-09-05_10-22-21.jpg"
+								},
+								{
+									"key": "videoFiles",
+									"type": "file",
+									"src": [
+										"/C:/Users/Ahmadsher/Downloads/TITANIC (1997) FULL MOVIE [ ENGLISH HD ] JACK AND ROSE.mp4",
+										"/C:/Users/Ahmadsher/Downloads/movie-1747767506285-275341581.mp4"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{movie}}/movies/upload",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"movies",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "releaseYear",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "language",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "subscriptionType",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "category_name",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movie by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/movies/id",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"movies",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "Add Favorite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"movieId\":\"\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/favorites",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Favorites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/favorites",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favorite by id",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Watch-History",
+			"item": [
+				{
+					"name": "Save History",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movieId\": \"thrhrth\",\r\n    \"watchedDuration\": 123,\r\n    \"watchedPercentage\": 66.6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/watch-history",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"watch-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All History",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/watch-history",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"watch-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "History by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/watch-history/byug8hhui",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"watch-history",
+								"byug8hhui"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Send Comment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<canvas id=\"errorChart\" height=\"75\"></canvas>\r",
+									"\r",
+									"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js\"></script> \r",
+									"\r",
+									"<script>\r",
+									"    var ctx = document.getElementById(\"errorChart\");\r",
+									"\r",
+									"    var errorChart = new Chart(ctx, {\r",
+									"        type: \"bar\",\r",
+									"        data: {\r",
+									"            labels: [],\r",
+									"            datasets: [{\r",
+									"                data: [],\r",
+									"                \r",
+									"                // Change these colours to customize the chart\r",
+									"                backgroundColor: [\"#003f5c\", \"#58508d\", \"#bc5090\", \"#ff6361\", \"#ffa600\"],\r",
+									"            }]\r",
+									"        },\r",
+									"        options: {\r",
+									"            legend: { display: false },\r",
+									"            title: {\r",
+									"                display: true,\r",
+									"                text: 'Error Count'\r",
+									"            },\r",
+									"            scales: {\r",
+									"                xAxes: [{\r",
+									"                    display: true,\r",
+									"                    scaleLabel: {\r",
+									"                        display: true,\r",
+									"                        labelString: 'Errors'\r",
+									"                    }\r",
+									"                }],\r",
+									"                yAxes: [{\r",
+									"                    display: true,\r",
+									"                    scaleLabel: {\r",
+									"                        display: true,\r",
+									"                        labelString: 'Count'\r",
+									"                    }\r",
+									"                }]\r",
+									"            }\r",
+									"        }\r",
+									"\r",
+									"    });\r",
+									"\r",
+									"    // Access the data passed to pm.visualizer.set() from the JavaScript\r",
+									"    // code of the Visualizer template\r",
+									"    pm.getData(function (err, value) {\r",
+									"        errorChart.data.datasets[0].data = [value.response.message.length];\r",
+									"        errorChart.data.labels = [\"Error Messages\"];\r",
+									"        errorChart.update();\r",
+									"    });\r",
+									"\r",
+									"</script>`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    var res = pm.response.json();\r",
+									"    \r",
+									"    var visualizerData = {\r",
+									"        \r",
+									"        // Labels take an array of strings\r",
+									"        message: res.message,\r",
+									"    };\r",
+									"\r",
+									"    return {response: visualizerData};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movieId\": \"yguyg67gyug67g76gguygyug655f5f4e76y77hyu\",\r\n    \"rating\": 5,\r\n    \"comment\": \"Juda ajoyib filim\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/reviews",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comments of Movie",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movieId\": \"yguyg67gyug67g76gguygyug655f5f4e76y77hyu\",\r\n    \"rating\": 5,\r\n    \"comment\": \"Juda ajoyib filim\"\r\n}"
+						},
+						"url": {
+							"raw": "{{movie}}/reviews/5ds3dsdsd4sd8sdsd7sdsdsd5s8sds7sd9sd",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"reviews",
+								"5ds3dsdsd4sd8sdsd7sdsdsd5s8sds7sd9sd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"movieId\": \"yguyg67gyug67g76gguygyug655f5f4e76y77hyu\",\r\n    \"rating\": 5,\r\n    \"comment\": \"Juda ajoyib filim\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/reviews/5ds3dsdsd4sd8sdsd7sdsdsd5s8sds7sd9sd",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"reviews",
+								"5ds3dsdsd4sd8sdsd7sdsdsd5s8sds7sd9sd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/reviews/ygggygghk^&*^*HBBJYGY",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"reviews",
+								"ygggygghk^&*^*HBBJYGY"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "All Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/admins/reviews",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"admins",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/admins/reviews/id",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"admins",
+								"reviews",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Sarguzasht\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/admins/categories",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"admins",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/admins/categories/ba15c4ec-c3db-4f1a-8ee7-cfc9a2886812",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"admins",
+								"categories",
+								"ba15c4ec-c3db-4f1a-8ee7-cfc9a2886812"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"JanGari\"}"
+						},
+						"url": {
+							"raw": "{{movie}}/admins/categories",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"admins",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One Category by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"JanGari\"}"
+						},
+						"url": {
+							"raw": "{{movie}}/admins/categories/ca47a87d-ecc2-4073-bb3b-b462ef28a78c",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"admins",
+								"categories",
+								"ca47a87d-ecc2-4073-bb3b-b462ef28a78c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"drama\",\"description\":null}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/admins/categories/77af273b-0f41-4b9d-bc40-eb3fcf449a05",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"admins",
+								"categories",
+								"77af273b-0f41-4b9d-bc40-eb3fcf449a05"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Categories",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/admins/categories",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"admins",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Super-Admin",
+			"item": [
+				{
+					"name": "Add Plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Premium\",\r\n    \"price\": 10,\r\n    \"duration\": 1,\r\n    \"unit\": \"MONTH\",\r\n    \"features\": [\r\n        \"Reklamali\",\r\n        \"SD Filimlar\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/superadmin/plans",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"superadmin",
+								"plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Plan by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Premium\",\r\n    \"price\": 10,\r\n    \"duration\": 1,\r\n    \"unit\": \"MONTH\",\r\n    \"features\": [\r\n        \"Reklamali\",\r\n        \"SD Filimlar\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/superadmin/plans/abbe1b51-f960-4d44-bdcb-f6f41f273cc1",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"superadmin",
+								"plans",
+								"abbe1b51-f960-4d44-bdcb-f6f41f273cc1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Plan by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/superadmin/plans/abbe1b51-f960-4d44-bdcb-f6f41f273cc1",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"superadmin",
+								"plans",
+								"abbe1b51-f960-4d44-bdcb-f6f41f273cc1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Plan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/superadmin/plans",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"superadmin",
+								"plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Admins",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{movie}}/superadmin/admins",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"superadmin",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"Ahmadsher$05\",\"email\":\"ahmadsher$05@gmail.com\",\"password\":\"$05xxxx\",\"fullName\":\"Ahmadsher G'aniyev\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{movie}}/superadmin/admins",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"superadmin",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"Ahmadsher$05\",\"email\":\"ahmadsher$05@gmail.com\",\"password\":\"$05xxxx\",\"fullName\":\"Ahmadsher G'aniyev\"}"
+						},
+						"url": {
+							"raw": "{{movie}}/superadmin/admins/990448c7-b8fa-44d2-8ab5-1695fbd70f1e",
+							"host": [
+								"{{movie}}"
+							],
+							"path": [
+								"superadmin",
+								"admins",
+								"990448c7-b8fa-44d2-8ab5-1695fbd70f1e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "movie",
+			"value": "http://localhost:4000/api",
+			"type": "string"
+		},
+		{
+			"key": "static",
+			"value": "http://localhost:4000/uploads",
+			"type": "string"
+		}
+	]
+}

@@ -1,27 +1,12 @@
-// dto/create-movie.dto.ts - To'g'rilangan versiya
-
 import {
   IsString,
   IsNotEmpty,
   IsArray,
-  ValidateNested,
   IsNumber,
   IsUUID,
   ArrayNotEmpty,
 } from 'class-validator';
 import { Type, Transform } from 'class-transformer';
-import { VideoQuality } from '@prisma/client';
-import { MovieLanguage } from 'src/common/@types/literal.enum';
-
-class CreateMovieFileDto {
-  @IsString()
-  @IsNotEmpty()
-  quality: VideoQuality;
-
-  @IsString()
-  @IsNotEmpty()
-  language: MovieLanguage;
-}
 
 export class CreateMovieDto {
   @IsString()
