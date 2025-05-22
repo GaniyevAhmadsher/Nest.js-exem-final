@@ -72,7 +72,7 @@ export class AdminsController {
     const data = await this.adminsService.delAllCategory();
     return {
       message: 'All Categories deleted successfully',
-      deleted_count: data,
+      data: { deleted_count: data },
     };
   }
 }

@@ -56,13 +56,16 @@ export class AdminsService {
   }
 
   async createCategory(createCategoryDto: CreateCategoryDto) {
-    const { name, description } = createCategoryDto;
-    const isExist = await this.database.category.findFirst({ where: { name } });
+    let { name, description } = createCategoryDto;
+    name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    const isExist = await this.database.category.findUnique({
+      where: { name },
+    });
     if (isExist)
       throw new ConflictException(`${name} is already exist in CategoryList`);
 
     try {
-      const slug = (await generateSlug(name, this.database)) as string;
+      const slug = await generateSlug(name, this.database);
       return await this.database.category.create({
         data: { name, slug, description },
       });
@@ -89,10 +92,12 @@ export class AdminsService {
   }
 
   async updateCategory(id: string, updateCategoryDto: UpdateCategoryDto) {
-    const { name, description } = updateCategoryDto;
+    let { name, description } = updateCategoryDto;
     let slug: string | undefined;
-    if (typeof name === 'string')
+    if (typeof name === 'string') {
+      name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
       slug = await generateSlug(name, this.database);
+    }
     const isExist = await this.database.category.findUnique({ where: { id } });
     if (!isExist)
       throw new NotFoundException(`Category with this id:${id} is not exist!`);
