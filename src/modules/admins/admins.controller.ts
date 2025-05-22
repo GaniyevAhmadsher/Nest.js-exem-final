@@ -33,18 +33,46 @@ export class AdminsController {
     return { message: 'Review deleted successfully' };
   }
 
+  // * Category CRUD
   @Post('categories')
-  async createCategory(@Body() createCategoryDto: CreateCategoryDto) {}
+  async createCategory(@Body() createCategoryDto: CreateCategoryDto) {
+    const data = await this.adminsService.createCategory(createCategoryDto);
+    return { data };
+  }
 
   @Get('categories')
-  async allCategory() {}
+  async allCategory() {
+    const data = await this.adminsService.allCategory();
+    return { data };
+  }
+
+  @Get('categories/:id')
+  async oneCategory(@Param('id') id: string) {
+    const data = await this.adminsService.oneCategory(id);
+    return { data };
+  }
 
   @Put('categories/:id')
   async updateCategory(
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
-  ) {}
+  ) {
+    const data = await this.adminsService.updateCategory(id, updateCategoryDto);
+    return { message: 'Category updated successfully', data };
+  }
 
   @Delete('categories/:id')
-  async removeCategory(@Param('id') id: string) {}
+  async removeCategory(@Param('id') id: string) {
+    await this.adminsService.removeCategory(id);
+    return { message: 'Category deleted successfully' };
+  }
+
+  @Delete('categories')
+  async removeAllCategory() {
+    const data = await this.adminsService.delAllCategory();
+    return {
+      message: 'All Categories deleted successfully',
+      deleted_count: data,
+    };
+  }
 }
