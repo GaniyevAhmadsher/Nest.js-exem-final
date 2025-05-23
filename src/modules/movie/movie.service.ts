@@ -11,6 +11,9 @@ import { MovieFile, Prisma } from '@prisma/client';
 import { generateSlug } from './dto/generate-slug';
 import { getVideoLanguage, getVideoQuality } from 'src/common/utils/movie.util';
 import { SubscriptionType } from 'src/common/@types/literal.enum';
+import { unlink } from 'fs/promises';
+import { join } from 'path';
+import { cwd } from 'process';
 
 @Injectable()
 export class MovieService {
@@ -227,7 +230,18 @@ export class MovieService {
     if (!isHas) throw new NotFoundException(`Movie not found`);
 
     try {
-      await this.database.movie.delete({ where: { id } });
+      const fileUrlArr = await this.database.movieFile.findMany({
+        where: { movieId: id },
+        select: { fileUrl: true },
+      });
+      const posterUrl = await this.database.movie.delete({
+        where: { id },
+        select: { posterUrl: true },
+      });
+      await unlink(join(cwd(), `${posterUrl}`));
+      fileUrlArr.map(
+        async (movieUrl) => await unlink(join(cwd(), `${movieUrl}`)),
+      );
     } catch (error) {
       throw new InternalServerErrorException(error.message);
     }

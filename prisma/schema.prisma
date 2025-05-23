@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//// 👤 Foydalanuvchilar jadvali
+// 👤 Foydalanuvchilar jadvali
 model User {
   id        String   @id @default(uuid())
   username  String   @unique
@@ -36,7 +36,7 @@ enum Role {
   SUPER_ADMIN
 }
 
-//// 💳 Obuna rejalari
+// 💳 Obuna rejalari
 model SubscriptionPlan {
   id        String    @id @default(uuid())
   name      String    @unique
@@ -113,7 +113,7 @@ enum PaymentStatus {
   REFUNDED
 }
 
-//// 🎬 Filmlar
+// 🎬 Filmlar
 model Movie {
   id               String           @id @default(uuid())
   title            String
@@ -143,7 +143,7 @@ enum SubscriptionType {
   PREMIUM
 }
 
-//// 🏷️ Kategoriyalar
+// 🏷️ Kategoriyalar
 model Category {
   id          String   @id @default(uuid())
   name        String   @unique
@@ -156,7 +156,7 @@ model Category {
   @@map("categories")
 }
 
-//// 🎬 Kino-kategoriya ko‘prik jadvali
+// 🎬 Kino-kategoriya ko‘prik jadvali
 model MovieCategory {
   id         String @id @default(uuid())
   movieId    String
@@ -169,7 +169,7 @@ model MovieCategory {
   @@map("movie_categories")
 }
 
-//// 📂 Kino fayllari
+// 📂 Kino fayllari
 model MovieFile {
   id        String       @id @default(uuid())
   movieId   String
@@ -191,7 +191,7 @@ enum VideoQuality {
   UNKNOWN
 }
 
-//// ⭐ Sevimlilar
+// ⭐ Sevimlilar
 model Favorite {
   id        String   @id @default(uuid())
   userId    String
@@ -205,7 +205,7 @@ model Favorite {
   @@map("favorites")
 }
 
-//// 📝 Sharhlar
+// 📝 Sharhlar
 model Review {
   id        String   @id @default(uuid())
   userId    String
@@ -220,7 +220,7 @@ model Review {
   @@map("reviews")
 }
 
-//// 📺 Tomosha tarixi
+// 📺 Tomosha tarixi
 model WatchHistory {
   id                String   @id @default(uuid())
   userId            String
